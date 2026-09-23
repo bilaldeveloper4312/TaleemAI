@@ -6,11 +6,11 @@ TaleemAI will turn a PDF or class handout into clear bilingual explanations, cit
 
 ## What is working now
 
-- A responsive document-study workspace
-- English / Urdu interface toggle
-- AI study-answer experience with source citations
-- Interactive quiz surface
-- Flashcards and learning-progress UI
+- Upload text-based PDFs up to 15 MB and 60 pages
+- Extract PDF text in the browser and find relevant passages locally
+- Ask questions in English or Urdu through a server-side AI endpoint
+- Show page citations returned for the answer
+- Keep PDF contents in the current browser session; refresh clears them
 
 ## Roadmap
 
@@ -18,7 +18,9 @@ TaleemAI will turn a PDF or class handout into clear bilingual explanations, cit
 
 - [x] Initial interface and study workspace
 - [x] GitHub repository, build pipeline, and documentation
-- [ ] Accessible upload flow and document library
+- [x] Accessible PDF upload flow and text extraction
+- [x] Page-aware passage search and cited Q&A endpoint
+- [ ] Persistent document library
 - [ ] Responsive UI QA
 
 ### Phase 2 — Real AI learning
@@ -50,6 +52,14 @@ npm run dev
 ```
 
 Open the local URL printed by the development server.
+
+To enable AI answers, create a Vercel AI Gateway key and add it to a local .dev.vars file:
+
+```text
+AI_GATEWAY_API_KEY=your-key
+```
+
+The .dev.vars file stays local and is excluded from Git. PDF text only leaves the browser when you submit a question; the API receives the selected passages and question to generate an answer. This first upload flow is session-only. Durable accounts and document storage are planned for a later phase.
 
 ## Contributing
 
